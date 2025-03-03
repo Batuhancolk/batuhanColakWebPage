@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batuhan Çolak | Blog Projesi</title>
+    <title>Batuhan Çolak | Sinema Rezervasyon Projesi</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap"
         rel="stylesheet">
@@ -163,6 +163,21 @@
             letter-spacing: 0.5px;
         }
 
+        .responsive-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio (9 / 16 = 0.5625 veya 56.25%) */
+        }
+
+        .responsive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
         @media (max-width: 768px) {
             .project-details-section {
                 padding: 6rem 0 3rem;
@@ -221,22 +236,30 @@
     <!-- Proje Detayları -->
     <section class="project-details-section">
         <div class="container">
-            <h1 class="section-title">Blog Projesi Detayları</h1>
+            <h1 class="section-title">Sinema Rezervasyon Projesi Detayları</h1>
 
             <div class="row g-5 mb-5">
                 <div class="col-lg-8">
-                    <img src="img/blog-proje/AnaSayfa.JPG" class="project-image" alt="Blog Projesi">
-                    <img src="img/blog-proje/BlogEkle.JPG" class="project-image" alt="Blog Projesi" style="width: 80%;">
-                    <img src="img/blog-proje/KayıtOl.JPG" class="project-image" alt="Blog Projesi" style="width: 80%;">
-                    <img src="img/blog-proje/Panel.JPG" class="project-image" alt="Blog Projesi">
+                    <div class="responsive-iframe-container">
+                        <iframe src="https://www.youtube.com/embed/YBS28BqggvE?si=21apr_OHn3ZttHqL"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <img src="img/sinema-bilet/sinemaMain.JPG" class="project-image" alt="Blog Projesi">
+                    <img src="img/sinema-bilet/sinemaDetay.JPG" class="project-image" alt="Blog Projesi">
+                    <img src="img/sinema-bilet/sinemaPerde.JPG" class="project-image" alt="Blog Projesi">
+
                     <div class="detail-card p-4">
                         <h4 class="mb-4" style="color: var(--accent);">🔗 Linkler</h4>
                         <div class="d-grid gap-3">
-                            <a href="#" class="btn-accent">
+                            <a href="https://github.com/Batuhancolk/sinema-rezervasyon" class="btn-accent"
+                                target="_blank">
                                 <i class="fab fa-github"></i>
                                 GitHub
                             </a>
-                            <a href="#" class="btn-accent">
+                            <a href="https://youtu.be/YBS28BqggvE?si=1hXr2tOt-SpC1Gz-" class="btn-accent"
+                                target="_blank">
                                 <i class="fa-brands fa-youtube"></i>
                                 YouTube
                             </a>
@@ -248,23 +271,26 @@
                 <div class="col-lg-4">
                     <div class="detail-card p-4">
                         <h3 class="mb-4" style="color: var(--accent);">Proje Açıklaması</h3>
-                        <p>Blog Projesi: <br>
-                            Sayfayı ziyaret eden kullanıcılar yayınlanan bütün içerikleri görebilir ve detaylarına
-                            ulaşabilirler,kategorilere göre filtreleme işlemi uygulayabilirler.
-                            Ana Sayfada yayınlanan bloğun içeriğine girildiğinde, bloğu oluşturan kullanıcı bilgisi ve o
-                            blog ile alakalı yazılara ve görsele ulaşabilir. <br>
-                            Kayıt olma bölümünde kullanıcı üye kaydı yapılabilir ve kullanıcı kaydı yapıldıktan sonra
-                            kullanıcının mailine bir mesaj gönderilir. <br>
-                            Giriş yapma bölümünde kullanıcı giriş yapabilir. Giriş yapan kullanıcı için yeni bölümler
-                            aktif olur. Giriş yapan kullanıcı blog paylaşımı yapabilir,
-                            kendi yayınladığı blog üzerinde düzenlemeler yapabilir eğer isterse bloğu sayfadan
-                            kaldırabilir. <br>
-                            Düzenleme işlemleri,giriş çıkış,hatalı paralo vs gibi işlemler için kullanıcıya
-                            bir hata mesajı gönderilir. <br>
-                            Üye olup giriş yapan kullanıcılar için belli özellikler tanımlıdır.
-                            Üye olup giriş yapan kullanıcılar yalnızca kendi yayınladığı blog içeriklerine müdahele
-                            edebilirler. <br> Yapılan işlemler,yayınlanan bloglar ve kullanıcı bilgileri veritabanında
-                            saklanır. </p>
+                        <p>Sinema Bilet Rezervasyon: <br>
+                            Bu proje, kullanıcıların film rezervasyonu yapabilmesini sağlayan bir sinema yönetim sistemi
+                            oluşturur. Sistem, kullanıcıların filme ait seansları görüntülemesi, koltuk seçimi yapması
+                            ve rezervasyonlarını tamamlamasına olanak tanır.
+                            Ayrıca, admin paneli üzerinden film ekleme, silme ve düzenleme.Seans ekleme,silme.Seans
+                            bilgilerine göre koltuk ekleme,silme gibi işlemleri yapılabilir.Rezervasyon bilgilerini
+                            görüntüleyebilir, dolu koltukları boşaltma gibi işlemleri
+                            yapmayı sağlar. <br>
+                            Kullanıcılar:
+                            Kayıt Olma: Kullanıcılar sisteme kaydolabilir.
+                            Giriş Yapma: Mevcut kullanıcılar giriş yapabilir.
+                            Film Detayları Görüntüleme: Kullanıcılar filmlerin detaylarına erişebilir.
+                            Seanslar ve Koltuk Seçimi: Kullanıcılar filmler için seansları ve koltukları seçebilir.
+                            Rezervasyon Yapma: Seçilen koltuklarla rezervasyon yapılabilir.
+                            Mail Gönderimi: Rezervasyon tamamlandığında, kullanıcılara e-posta gönderilir.
+                            Admin:
+                            Admin Girişi: Admin kullanıcıları giriş yapabilir.
+                            Film Ekleme ve Silme: Adminler yeni filmler ekleyebilir veya mevcut filmleri silebilir.
+                            Seans ve Koltuk Ekleme: Adminler her film için seans ve koltuk bilgilerini yönetebilir.
+                        </p>
                     </div>
                     <div class="detail-card p-4 mb-4">
                         <class class="mb-4" style="color: var(--accent);"> Kullanılan Teknolojiler</h4>
