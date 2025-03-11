@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batuhan Çolak | Sinema Rezervasyon Projesi</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #0F0F0F;
+            --text-primary: #F5F5F5;
+            --accent: #a59538;
+            --accent-hover: #b8a74a;
+            --card-bg: rgba(165, 149, 56, 0.05);
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-details-section {
+            padding: 8rem 0 4rem;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(165, 149, 56, 0.15);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 25px rgba(165, 149, 56, 0.1);
+        }
+
+        .project-image {
+            width: 90%;
+            height: 500px;
+            object-fit: fill;
+            border-radius: 12px;
+            border: 2px solid var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 120px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .tech-badge {
+            background: rgba(165, 149, 56, 0.15);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.3rem 0.3rem 0 0;
+            display: inline-block;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--dark-bg) !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(165, 149, 56, 0.3);
+        }
+
+        /* Navbar ve Footer stilleri about.ejs ile aynı */
+        .navbar {
+            padding: 1.2rem 0;
+            background: rgba(15, 15, 15, 0.98) !important;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link {
+            font-weight: 400;
+            margin: 0 1.2rem;
+            position: relative;
+            color: var(--text-primary) !important;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link i {
+            color: var(--accent);
+            margin-right: 0.8rem;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        /* Logo Stili */
+        .brand-logo {
+            width: 58px;
+            height: 58px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: var(--dark-bg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+        }
+
+        .brand-logo:hover {
+            transform: rotate(-15deg);
+            box-shadow: 0 4px 15px rgba(165, 149, 56, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 15, 15, 0.98);
+            border-top: 1px solid rgba(165, 149, 56, 0.15);
+            padding: 0.1rem 0;
+            margin-top: auto;
+        }
+
+        footer .text-muted {
+            color: var(--accent) !important;
+            opacity: 0.9;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .responsive-iframe-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            /* 16:9 Aspect Ratio (9 / 16 = 0.5625 veya 56.25%) */
+        }
+
+        .responsive-iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .project-details-section {
+                padding: 6rem 0 3rem;
+            }
+
+            .project-image {
+                height: 250px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="brand-logo" href="index.html">BÇ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fa-solid fa-house"></i>
+                            Ana Sayfa
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fa-solid fa-address-card"></i>
+                            Hakkımda
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">
+                            <i class="fa-solid fa-code"></i>
+                            Projeler
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fa-solid fa-comment"></i>
+                            İletişim
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Proje Detayları -->
+    <section class="project-details-section">
+        <div class="container">
+            <h1 class="section-title">Günlük Son Dakika Haberler
+                Projesi</h1>
+
+            <div class="row g-5 mb-5">
+                <div class="col-lg-8">
+                    <img src="img/breaking_news/1.JPG" class="project-image" alt="haberProje">
+                    <img src="img/breaking_news/2.JPG" class="project-image" alt="haberProje">
+
+                    <div class="detail-card p-4">
+                        <h4 class="mb-4" style="color: var(--accent);">🔗 Linkler</h4>
+                        <div class="d-grid gap-3">
+                            <a href="https://github.com/Batuhancolk/BreakingNewsAPI.git" class="btn-accent"
+                                target="_blank">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <a href="https://youtu.be/YBS28BqggvE?si=1hXr2tOt-SpC1Gz-" class="btn-accent"
+                                target="_blank">
+                                <i class="fa-brands fa-youtube"></i>
+                                YouTube
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="detail-card p-4">
+                        <h3 class="mb-4" style="color: var(--accent);">Proje Açıklaması</h3>
+                        <p>Günlük Son Dakika Haberler Projesi: <br>
+                            Bu proje, bir haber sitesinden son dakika haberlerini çekmek ve bu haberleri bir API
+                            aracılığıyla sunmak için geliştirilmiştir.
+                            Node.Js ile yazılmıştır ve EJS şablon motorunu kullanarak kullanıcıya görsel bir arayüz
+                            sağlar. <br>
+                            Haberler, API üzerinden JSON formatında sağlanırken, kullanıcılar HTML üzerinden haber
+                            başlıklarını ve içeriklerini görebilirler.
+                            Axios ve Cheerio kullanılmıştır. <br>
+                            Özellikler: <br>
+                            Son dakika haberlerini listeleme: Kullanıcılar, son dakika haberlerini /breaking_news
+                            endpoint'inden görebilirler. <br>
+                            Haber detayı görüntüleme: <br> Her bir haberin detaylarına tıklanarak, haberin içeriği
+                            /breaking_news/:title endpoint'inde görüntülenebilir.
+                            Dinamik tarih gösterimi: <br> Uygulama, güncel tarihi kullanıcıya gösterir.
+                            Paylaşım butonları: <br> Facebook, Twitter ve WhatsApp üzerinden haberleri paylaşmak için
+                            butonlar içerir.
+                        </p>
+                    </div>
+                    <div class="detail-card p-4 mb-4">
+                        <class class="mb-4" style="color: var(--accent);"> Kullanılan Teknolojiler</h4>
+                            <div class="d-flex flex-wrap">
+                                <span class="tech-badge">Node.js</span>
+                                <span class="tech-badge">Express</span>
+                                <span class="tech-badge">Web Scraping</span>
+                                <span class="tech-badge">Axios,Cheerio</span>
+                                <span class="tech-badge">Bootstrap 5</span>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="projects.html" class="btn-accent">
+                <i class="fas fa-arrow-left me-2"></i>
+                Tüm Projelere Dön
+
+            </a>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="mt-auto">
+        <div class="container text-center">
+            <p class="text-muted mb-0">&copy; 2025 Batuhan Çolak. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
